@@ -24,4 +24,4 @@ You will put these API keys in the plugin settings in the administration.
  
 ``Administration > Plugins > Extend plugins >  ReCaptcha > Configure``
 
-If you use reCaptcha V3 it is necessary to check the box `Use reCaptcha V3`, otherwise reCaptcha will not work.
+If you use reCaptcha V3 it is necessary to check the box ``Use reCaptcha V3``, otherwise reCaptcha will not work.
