@@ -8,7 +8,7 @@ The Google reCaptcha intergration plugin for Sunlight CMS 8 provides spam protec
 Requirements
 ************
 - `SunLight CMS 8 <https://github.com/sunlight-cms/sunlight-cms-8>`_
-- PHP 5.3.2+
+- PHP 5.5+
 
 Usage
 *****

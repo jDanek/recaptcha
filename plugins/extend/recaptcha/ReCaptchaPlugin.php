@@ -23,29 +23,29 @@ class ReCaptchaPlugin extends ExtendPlugin
         if ($this->getConfig()->offsetExists('site_key')
             && $this->getConfig()->offsetExists('secret_key')) {
             // reCaptcha v2 + v3
-            Extend::regm(array(
-                'tpl.head' => array($this, 'onHead'),
-                'captcha.init' => array($this, 'onCaptchaInit'),
-                'captcha.check' => array($this, 'onCaptchaCheck'),
-            ));
+            Extend::regm([
+                'tpl.head' => [$this, 'onHead'],
+                'captcha.init' => [$this, 'onCaptchaInit'],
+                'captcha.check' => [$this, 'onCaptchaCheck'],
+            ]);
 
             // reCaptcha v3
             if ($this->getConfig()->offsetGet('use_recaptcha_v3')) {
-                Extend::regm(array(
-                    'form.output' => array($this, 'onFormAppend')
-                ));
+                Extend::regm([
+                    'form.output' => [$this, 'onFormAppend']
+                ]);
             }
         }
     }
 
     protected function getConfigDefaults()
     {
-        return array(
+        return [
             'site_key' => null,
             'secret_key' => null,
             'use_curl' => false,
             'use_recaptcha_v3' => false,
-        );
+        ];
     }
 
     /**
@@ -71,7 +71,7 @@ class ReCaptchaPlugin extends ExtendPlugin
     /**
      * @param array $args
      */
-    public function onCaptchaInit($args)
+    public function onCaptchaInit(array $args)
     {
         if (!_logged_in) {
 
@@ -82,19 +82,19 @@ class ReCaptchaPlugin extends ExtendPlugin
                 : "<span class='hint'>This site is protected by reCAPTCHA and the Google <a href='https://policies.google.com/privacy' target='_blank'>Privacy Policy</a> and <a href='https://policies.google.com/terms' target='_blank'>Terms of Service</a> apply.</span>"
             );
 
-            $args['value'] = array(
+            $args['value'] = [
                 'label' => _lang('captcha.input'),
                 'content' => $content,
                 'top' => true,
                 'class' => ''
-            );
+            ];
         }
     }
 
     /**
      * @param $args
      */
-    public function onCaptchaCheck($args)
+    public function onCaptchaCheck(array $args)
     {
         if (!_logged_in) {
             if (isset($_POST['g-recaptcha-response'])) {
@@ -127,7 +127,7 @@ class ReCaptchaPlugin extends ExtendPlugin
      *
      * @param $args
      */
-    public function onFormAppend($args)
+    public function onFormAppend(array $args)
     {
         if (!_logged_in && $this->getConfig()->offsetGet('use_recaptcha_v3')) {
             $args['options']['form_prepend'] = trim(preg_replace('/\s+/', ' ', "<script>
