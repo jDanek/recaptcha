@@ -1,0 +1,11 @@
+{
+    "name": "ReCaptcha",
+    "description": "Protect forms by using the Google reCaptcha API",
+    "version": "1.0.0",
+    "api": "^8.0",
+    "url": "https://jdanek.eu/",
+    "class": "ReCaptchaPlugin",
+    "langs": {
+        "recaptcha": "Resources/languages/"
+    }
+}
